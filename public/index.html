@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Marvel Movie Tracker</title>
+    <style>
+      #unread, #read {
+        width: 40%;
+        background-color: antiquewhite;
+      }
+      #unread { float: left; }
+      #read { float: right; }
+      table, td {
+        border-width: 1px;
+        border-style: solid;
+        border-color: black;
+      }
+      #wrapper {
+        width: 960px;
+        padding-top: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      body {
+        font-family: sans-serif;
+        background-color: rgb(0, 92, 128);
+      }
+      #results { margin-top: 50px; }
+      #userinput { font-size: 24px; }
+      input {
+        width: 50%;
+        height: 36px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Marvel Movie Tracker</h1>
+      <h2><i>The latest and greatest in tracking the Marvel Movies!</i></h2>
+      <form id="userinput">
+          <input type="text" id="title" placeholder="Movie Title"/>
+        <br />
+          <input type="text" id="release" placeholder="Release Year"/>
+        <br />
+        <button type="submit" id="addmovie">Add New</button>
+      </form>
+      <div id="results">
+        <table id="unwatched">
+              <tr><th>Title</th><th>Release</th><th>Watched/Unwatched</th></tr>
+        </table>
+        <table id="watched">
+              <tr><th>Title</th><th>Release</th><th>Watched/Unwatched</th></tr>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

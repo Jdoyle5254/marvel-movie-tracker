@@ -1,5 +1,5 @@
 {
-  "name": "sequelize-library",
+  "name": "mongojs_review",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,12 +8,12 @@
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
-    "mysql2": "^1.6.4",
-    "sequelize": "^4.41.2"
+    "logger": "^0.0.1",
+    "mongojs": "^2.6.0",
+    "morgan": "^1.9.1"
   }
 }

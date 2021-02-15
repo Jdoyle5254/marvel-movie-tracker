@@ -1,30 +1,102 @@
-// *********************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-// *********************************************************************************
+const express = require("express");
+const mongojs = require("mongojs");
+const logger = require("morgan");
 
-// Dependencies
-// =============================================================
-var express = require("express");
+const databaseUrl = "warmup";
+const collections = ["movies"];
+const db = mongojs(databaseUrl, collections);
 
-// Sets up the Express App
-// =============================================================
-var app = express();
-var PORT = process.env.PORT || 8080;
+const app = express();
 
-// Sets up the Express app to handle data parsing
+app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
 
-// Static directory
-app.use(express.static("app/public"));
+db.on("error", error => {
+  console.log("Database Error:", error);
+});
 
-// Routes
-// =============================================================
-require("./app/routes/api-routes.js")(app);
-require("./app/routes/html-routes.js")(app);
+app.post("/submit", ({ body }, res) => {
+  const movie = body;
 
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+  movie.watched = false;
+
+  db.movies.save(movie, (error, saved) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(saved);
+    }
+  });
+});
+
+app.get("/watched", (req, res) => {
+  db.movies.find({ watched: true }, (error, found) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(found);
+    }
+  });
+});
+
+app.get("/unwatched", (req, res) => {
+  db.movies.find({ watched: false }, (error, found) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(found);
+    }
+  });
+});
+
+app.put("/markwatched/:id", ({ params }, res) => {
+  db.movies.update(
+    {
+      _id: mongojs.ObjectId(params.id)
+    },
+    {
+      $set: {
+        watched: true
+      }
+    },
+
+    (error, edited) => {
+      if (error) {
+        console.log(error);
+        res.send(error);
+      } else {
+        console.log(edited);
+        res.send(edited);
+      }
+    }
+  );
+});
+
+app.put("/markunwatched/:id", ({ params }, res) => {
+  db.movies.update(
+    {
+      _id: mongojs.ObjectId(params.id)
+    },
+    {
+      $set: {
+        watched: false
+      }
+    },
+
+    (error, edited) => {
+      if (error) {
+        console.log(error);
+        res.send(error);
+      } else {
+        console.log(edited);
+        res.send(edited);
+      }
+    }
+  );
+});
+
+app.listen(3000, () => {
+  console.log("App running on port 3000!");
 });
