@@ -44,19 +44,19 @@ $(document).on("click", ".markunwatched", function() {
   getUnWatched();
 });
 
-// Load unwatched movies and render them to the screen
+// Load unwatched movies and render them to the screen from the /unwatched route
 function getUnWatched() {
   $("#unwatched").empty();
   $.getJSON("/unwatched", function(data) {
     for (var i = 0; i < data.length; i++) {
       $("#unwatched ").prepend("<tr><td>" + data[i].title + "</td><td>" + data[i].release +
-        "</td><td><button class='markread' data-id='" + data[i]._id + "'>Mark Watched </button></td></tr>");
+        "</td><td><button class='markwatched' data-id='" + data[i]._id + "'>Mark Watched </button></td></tr>");
     }
     $("#unwatched").prepend("<tr><th>Title</th><th>Realease</th><th>Watch/UnWatch</th></tr>");
   });
 }
 
-// Load watched movies and render them to the screen
+// Load watched movies from the /watched route and render them to the screen
 function getWatched() {
   $("#watched").empty();
   $.getJSON("/watched", function(data) {

@@ -23,6 +23,7 @@ db.on("error", error => {
 // year: String,
 //  })
 
+// submit route to add the user input to the database
 app.post("/submit", ( req, res) => {
   const movie = {
     title: req.body.title,
@@ -40,6 +41,7 @@ app.post("/submit", ( req, res) => {
   });
 });
 
+// this is the route that calls up the watched movies and displays to the main page.
 app.get("/watched", (req, res) => {
   db.movies.find({ watched: true }, (error, found) => {
     if (error) {
@@ -50,6 +52,7 @@ app.get("/watched", (req, res) => {
   });
 });
 
+// this is the route that calls up the unwatched movies and displays to the page
 app.get("/unwatched", (req, res) => {
   db.movies.find({ watched: false }, (error, found) => {
     if (error) {
@@ -60,6 +63,7 @@ app.get("/unwatched", (req, res) => {
   });
 });
 
+// this is the route that based on the id selected will change the movie to watched
 app.put("/markwatched/:id", ({ params }, res) => {
   db.movies.update(
     {
@@ -83,6 +87,7 @@ app.put("/markwatched/:id", ({ params }, res) => {
   );
 });
 
+// this is the route that based on the id selected will change to movie to unwatched
 app.put("/markunwatched/:id", ({ params }, res) => {
   db.movies.update(
     {
@@ -105,6 +110,8 @@ app.put("/markunwatched/:id", ({ params }, res) => {
     }
   );
 });
+
+// this is the function that chooses the port 
 
 app.listen(8080, () => {
   console.log("App running on port 8080!");
