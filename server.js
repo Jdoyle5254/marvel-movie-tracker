@@ -2,7 +2,7 @@ const express = require("express");
 const mongojs = require("mongojs");
 const logger = require("morgan");
 
-const databaseUrl = "warmup";
+const databaseUrl = "marvelmovies";
 const collections = ["movies"];
 const db = mongojs(databaseUrl, collections);
 
@@ -17,8 +17,17 @@ db.on("error", error => {
   console.log("Database Error:", error);
 });
 
-app.post("/submit", ({ body }, res) => {
-  const movie = body;
+// const Schema = mongoose.Schema
+// var movies = new Schema({
+// title: String,
+// year: String,
+//  })
+
+app.post("/submit", ( req, res) => {
+  const movie = {
+    title: req.body.title,
+    release: req.body.release
+  }
 
   movie.watched = false;
 
@@ -97,6 +106,6 @@ app.put("/markunwatched/:id", ({ params }, res) => {
   );
 });
 
-app.listen(3000, () => {
-  console.log("App running on port 3000!");
+app.listen(8080, () => {
+  console.log("App running on port 8080!");
 });

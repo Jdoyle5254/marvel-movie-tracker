@@ -8,21 +8,21 @@ $("#addmovie").on("click", function() {
     dataType: "json",
     data: {
       title: $("#title").val(),
-      author: $("#release").val(),
+      release: $("#release").val(),
       created: Date.now()
     }
   })
     .then(function(data) {
       console.log(data);
       getUnWatched();
-      $("#author").val("");
+      $("#title").val("");
       $("#release").val("");
     }
     );
   return false;
 });
 
-// Click event to mark a book as read
+// Click event to mark a movie as watched
 $(document).on("click", ".markwatched", function() {
   var thisId = $(this).attr("data-id");
   $.ajax({
@@ -33,7 +33,7 @@ $(document).on("click", ".markwatched", function() {
   getWatched();
 });
 
-// Click event to mark a book as not read
+// Click event to mark a movie as not watched
 $(document).on("click", ".markunwatched", function() {
   var thisId = $(this).attr("data-id");
   $.ajax({
@@ -44,7 +44,7 @@ $(document).on("click", ".markunwatched", function() {
   getUnWatched();
 });
 
-// Load unread books and render them to the screen
+// Load unwatched movies and render them to the screen
 function getUnWatched() {
   $("#unwatched").empty();
   $.getJSON("/unwatched", function(data) {
@@ -56,7 +56,7 @@ function getUnWatched() {
   });
 }
 
-// Load read books and render them to the screen
+// Load watched movies and render them to the screen
 function getWatched() {
   $("#watched").empty();
   $.getJSON("/watched", function(data) {
