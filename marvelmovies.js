@@ -21,5 +21,5 @@ year: {
 
  const Movie = mongoose.model("Movie", marvelmoviesSchema); 
 
- module.exports = Movies;
+ module.exports = Movie;
 
