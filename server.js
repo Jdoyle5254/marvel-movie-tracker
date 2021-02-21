@@ -7,6 +7,7 @@ const Movie = require("./marvelmovies.js");
 const databaseUrl = "marvelmovies";
 const collections = ["movies"];
 const db = mongojs(databaseUrl, collections);
+
 var PORT = process.env.PORT || 8080;
 
 const app = express();
@@ -17,12 +18,6 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/moarvelmories", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
 
 
 
@@ -123,6 +118,13 @@ app.put("/markunwatched/:id", ({ params }, res) => {
       }
     }
   );
+});
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/moarvelmories", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 // this is the function that chooses the port 
