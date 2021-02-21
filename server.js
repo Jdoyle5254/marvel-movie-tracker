@@ -2,6 +2,7 @@ const express = require("express");
 const mongojs = require("mongojs");
 const logger = require("morgan");
 const mongoose = require('mongoose');
+const Movie = require("./marvelmovies.js");
 
 const databaseUrl = "marvelmovies";
 const collections = ["movies"];
@@ -14,6 +15,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/moarvelmories", {
   useNewUrlParser: true,
@@ -28,6 +30,7 @@ db.on("error", error => {
   console.log("Database Error:", error);
 });
 
+// TODO need to create models file for schema for web deploy
 // const Schema = mongoose.Schema
 // var movies = new Schema({
 // title: String,
