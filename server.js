@@ -13,17 +13,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use(require("./routes/api.js"));
 
-console.log(process.env.MONGODB_URI);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/marvelmovies", {
+console.log("things  " + process.env.MONGODB_URI);
+
+mongoose.connect("mongodb+srv://jenscloud:Hala-kahiki1964>@cluster0.ixi0o.mongodb.net/marvelmovies?retryWrites=true&w=majority" || "mongodb://localhost/marvelmovies", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
 });
 
+app.use(require("./routes/api.js"));
 // this is the function that chooses the port 
 
 app.listen(PORT, function() {
