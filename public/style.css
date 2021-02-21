@@ -1,0 +1,78 @@
+body {
+    font-family: sans-serif;
+    background-color: rgb(78, 117, 78);
+    font-family: 'Courier Prime', monospace;
+  } 
+  header {
+      text-align: center;
+      font-size: 55px; 
+      padding-top: 0px;
+      margin-top: 0px;
+     
+
+  }
+#unwatched, #watched {
+    width: 40%;
+    background-color: antiquewhite;
+    font-family: 'Courier Prime', monospace;
+  }
+  #unwatched { 
+      float: left;
+      margin-right: 25px;  }
+      
+  #watched { 
+      float: right; 
+     margin-left: 25px;
+}
+
+  table, td {
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+  }
+  #wrapper {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+  }
+ 
+  #results {
+       margin-top: 50px;
+     }
+  #userinput { 
+       font-size: 24px; 
+       text-align: center;    
+       
+}
+  input {
+    width: 50%;
+    height: 36px;
+    font-size: 24px;
+    background-color: bisque;
+
+  }
+
+  .addmovie { 
+    font-family: 'Courier Prime', monospace;  
+    color: orangered; 
+    font-weight: bolder;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+
+  }
+
+  footer {
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:rgb(184, 171, 97);
+    color: white;
+    text-align: center;
+    margin-top: 50px; 
+
+  }

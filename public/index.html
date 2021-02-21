@@ -2,49 +2,23 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&display=swap" rel="stylesheet">
     <title>Marvel Movie Tracker</title>
-    <style>
-      #unwatched, #watched {
-        width: 40%;
-        background-color: antiquewhite;
-      }
-      #unwatched { float: left; }
-      #watched { float: right; }
-      table, td {
-        border-width: 1px;
-        border-style: solid;
-        border-color: black;
-      }
-      #wrapper {
-        width: 960px;
-        padding-top: 10%;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-      }
-      body {
-        font-family: sans-serif;
-        background-color: rgb(0, 92, 128);
-      }
-      #results { margin-top: 50px; }
-      #userinput { font-size: 24px; }
-      input {
-        width: 50%;
-        height: 36px;
-        font-size: 24px;
-      }
-    </style>
+
   </head>
   <body>
+    <header><h1>Marvel Movie Tracker</h1></header> 
     <div id="wrapper">
-      <h1>Marvel Movie Tracker</h1>
       <h2><i>The latest and greatest in tracking the Marvel Movies!</i></h2>
+      <p> Admit it, you have always wanted to track your movie watching progress.  In this iteration add your Marvel movie and then mark them watched.  Its time to see how serious you are in entering the Marvel Universe.  Need some suggestions for the order?   <a href="https://editorial.rottentomatoes.com/guide/marvel-movies-in-order/"> Check out this blog post! </a></p>
       <form id="userinput">
-          <input type="text" id="title" placeholder="Movie Title"/>
+          <input type="text" id="title" placeholder="Which Marvel Movie to add?"/>
         <br />
           <input type="text" id="release" placeholder="Release Year"/>
         <br />
-        <button type="submit" id="addmovie">Add New</button>
+        <button class="addmovie" type="submit" id="addmovie">Add Movie</button>
       </form>
       <div id="results">
         <table id="unwatched">
@@ -55,6 +29,8 @@
         </table>
       </div>
     </div>
+
+    <footer>Kenner&Genner 2021  Watch for more creations! </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
   </body>
