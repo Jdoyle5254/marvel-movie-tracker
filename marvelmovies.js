@@ -10,7 +10,7 @@ title: {
     trim: true,
     required: "Enter a movie title"
 
-}
+},
     
 year: {
     type: String,
