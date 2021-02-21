@@ -15,6 +15,8 @@ app.use(express.static("public"));
 
 app.use(require("./routes/api.js"));
 
+console.log(process.env.MONGODB_URI);
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/marvelmovies", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
