@@ -1,10 +1,12 @@
 const express = require("express");
 const mongojs = require("mongojs");
 const logger = require("morgan");
+const mongoose = require('mongoose');
 
 const databaseUrl = "marvelmovies";
 const collections = ["movies"];
 const db = mongojs(databaseUrl, collections);
+var PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -12,6 +14,15 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/moarvelmories", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+});
+
+
 
 db.on("error", error => {
   console.log("Database Error:", error);
@@ -113,6 +124,7 @@ app.put("/markunwatched/:id", ({ params }, res) => {
 
 // this is the function that chooses the port 
 
-app.listen(8080, () => {
-  console.log("App running on port 8080!");
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
