@@ -15,9 +15,9 @@ app.use(express.static("public"));
 
 
 
-console.log("things  " + process.env.MONGODB_URI);
 
-mongoose.connect("mongodb+srv://jenscloud:Hala-kahiki1964>@cluster0.ixi0o.mongodb.net/marvelmovies?retryWrites=true&w=majority" || "mongodb://localhost/marvelmovies", {
+
+mongoose.connect(process.env.MONGODB_URI  || "mongodb://localhost/marvelmovies", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
